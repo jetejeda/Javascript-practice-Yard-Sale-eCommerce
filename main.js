@@ -5,8 +5,8 @@ const shoppingCart = document.querySelector('.navbar-shopping-cart');
 popUpUserProfile.addEventListener('click', showDesktopMenu);
 
 hamburgerMenu.addEventListener('click', showMobileMenu);
-const detail = document.querySelector('.product-detail');
-shoppingCart.addEventListener('click', function(){toggleElement(detail, document.querySelector('.mobile-menu'))});
+const shoppingCartDetail = document.getElementById('shoppingCartContainer');
+shoppingCart.addEventListener('click', function(){toggleElement(shoppingCartDetail, document.querySelector('.mobile-menu'))});
 
 function showDesktopMenu(){
     const menu = document.querySelector('.desktop-menu');
@@ -15,7 +15,7 @@ function showDesktopMenu(){
 
 function showMobileMenu(){
     const mobileMenu  = document.querySelector('.mobile-menu')
-    detail.classList.add('inactive')
+    shoppingCartDetail.classList.add('inactive')
     mobileMenu.classList.toggle('inactive')
 };
 
