@@ -23,3 +23,47 @@ function toggleElement(section, hideElement){//We can also pass the element from
     hideElement.classList.add('inactive');
     section.classList.toggle("inactive");
 }
+
+let products = [
+    {Price: 20, Name: 'Bike', Src: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'},
+    {Price: 300, Name: 'Computer', Src: 'https://images.pexels.com/photos/5797997/pexels-photo-5797997.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'},
+    {Price: 20, Name: 'Bike2', Src: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'}
+];
+
+renderProducts(products);
+
+function renderProducts(products){    
+    const cardContainer = document.querySelector('.cards-container');
+    for(product of products){
+        const newProduct = createProductDetail(product);
+        cardContainer.appendChild(newProduct);
+    }
+}
+
+function createProductDetail(product){
+    const productCard = document.createElement('div');
+    productCard.classList.add('product-card');
+
+    const img = document.createElement('img');
+    img.src = product.Src;
+    const productInfo = document.createElement('div');
+    productInfo.classList.add('product-info');
+
+    const container = document.createElement('div');
+    const productName = document.createElement('p');
+    productName.innerText = product.Name;
+
+    const productPrice = document.createElement('p');
+    productPrice.innerText = '$' + product.Price;
+
+    const figure = document.createElement('figure');
+    const img2 = document.createElement('img');
+    img2.src = './icons/bt_add_to_cart.svg';
+
+    figure.appendChild(img2);
+    container.append(productPrice, productName);
+    productInfo.append(container, figure);
+    productCard.append(img, productInfo);
+    
+    return productCard;
+}
